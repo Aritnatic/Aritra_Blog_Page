@@ -1,0 +1,96 @@
+/* reset some default spacing so things look neat */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    color: #f2f2f2;
+}
+
+/* ---------- navbar ---------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #262740;
+    padding: 20px 40px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f2f2f2;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #ffb703;
+}
+
+/* ---------- basic info section ---------- */
+#basic_info {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+#basic_info h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+#basic_info h2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #cccccc;
+    margin-bottom: 10px;
+}
+
+#basic_info h4 {
+    font-size: 16px;
+    color: #ffb703;
+    margin-bottom: 20px;
+}
+
+#basic_info p {
+    margin-bottom: 15px;
+}
+
+#basic_info button {
+    background-color: #ffb703;
+    color: #1e1e2f;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#basic_info button:hover {
+    background-color: #ffcd39;
+}
+
+/* favourite foods list */
+#basic_info ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+#basic_info ul li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}

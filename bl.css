@@ -1,0 +1,216 @@
+/* ===================================================
+   Tokens
+=================================================== */
+:root {
+    --bg:        #14151c;
+    --bg-raised: #1b1c26;
+    --ink:       #e9e4d8;
+    --ink-dim:   #948f81;
+    --gold:      #c9a367;
+    --gold-dim:  #8a744c;
+    --rule:      rgba(233, 228, 216, 0.12);
+
+    --display: "Fraunces", "Iowan Old Style", serif;
+    --body:    "Newsreader", "Iowan Old Style", Georgia, serif;
+    --mono:    "Space Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: dark; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    background-image:
+        radial-gradient(ellipse at top left, rgba(201, 163, 103, 0.06), transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(201, 163, 103, 0.04), transparent 60%);
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--gold);
+    color: var(--bg);
+}
+
+a {
+    color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* ===================================================
+   Page frame
+=================================================== */
+#blogs_entity {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Signature element: a filmstrip rail running the length of the entry,
+   a nod to "The Fall" and to each post being one frame of a longer reel. */
+.reel {
+    position: relative;
+    background: var(--bg-raised);
+    background-image:
+        radial-gradient(circle, var(--bg) 5px, transparent 5.5px);
+    background-size: 44px 34px;
+    background-position: center;
+    border-right: 1px solid var(--rule);
+}
+
+#blog_body {
+    padding: clamp(28px, 6vw, 72px) clamp(20px, 6vw, 64px) 96px;
+}
+
+/* ===================================================
+   Header
+=================================================== */
+.blog-header {
+    margin-bottom: clamp(36px, 6vw, 56px);
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+}
+
+h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    letter-spacing: 0.01em;
+    line-height: 1;
+    color: var(--ink);
+}
+
+/* ===================================================
+   Entry list
+=================================================== */
+.entries {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.entry {
+    max-width: 62ch;
+}
+
+.entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-dim);
+}
+
+.frame {
+    color: var(--gold);
+    letter-spacing: 0.08em;
+}
+
+.divider {
+    color: var(--rule);
+}
+
+/* ===================================================
+   Body copy
+=================================================== */
+.entry p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    margin: 0 0 1.4em;
+    color: var(--ink);
+}
+
+.entry p.drop::first-letter {
+    float: left;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 3.4em;
+    line-height: 0.85;
+    padding: 0.05em 0.09em 0 0;
+    color: var(--gold);
+}
+
+.glyph {
+    font-style: normal;
+    opacity: 0.7;
+}
+
+/* Inline citations for the book / film links: understated,
+   a single warm underline rather than default blue link styling. */
+.cite {
+    text-decoration: none;
+    font-style: italic;
+    color: var(--ink);
+    border-bottom: 1px solid var(--gold-dim);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cite:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+/* Pull quotes for the two reflective one-liners:
+   set apart like a subtitle card, not a generic blockquote. */
+.pull {
+    margin: 2.2em 0 2.2em 0;
+    padding: 0.2em 0 0.2em 1.3em;
+    border-left: 2px solid var(--gold);
+    font-family: var(--body);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.18rem;
+    line-height: 1.6;
+    color: var(--ink);
+    letter-spacing: 0.005em;
+}
+
+/* ===================================================
+   Responsive
+=================================================== */
+@media (max-width: 640px) {
+    #blogs_entity {
+        grid-template-columns: 22px minmax(0, 1fr);
+    }
+
+    .reel {
+        background-size: 22px 26px;
+        background-image: radial-gradient(circle, var(--bg) 3px, transparent 3.5px);
+    }
+
+    #blog_body {
+        padding: 32px 20px 72px;
+    }
+
+    .entry p.drop::first-letter {
+        font-size: 2.8em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

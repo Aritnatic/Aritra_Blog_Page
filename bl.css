@@ -1,216 +1,102 @@
-/* ===================================================
-   Tokens
-=================================================== */
-:root {
-    --bg:        #14151c;
-    --bg-raised: #1b1c26;
-    --ink:       #e9e4d8;
-    --ink-dim:   #948f81;
-    --gold:      #c9a367;
-    --gold-dim:  #8a744c;
-    --rule:      rgba(233, 228, 216, 0.12);
-
-    --display: "Fraunces", "Iowan Old Style", serif;
-    --body:    "Newsreader", "Iowan Old Style", Georgia, serif;
-    --mono:    "Space Mono", ui-monospace, monospace;
+/* reset default spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-* { box-sizing: border-box; }
-
-html { color-scheme: dark; }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    background-image:
-        radial-gradient(ellipse at top left, rgba(201, 163, 103, 0.06), transparent 55%),
-        radial-gradient(ellipse at bottom right, rgba(201, 163, 103, 0.04), transparent 60%);
-    color: var(--ink);
-    font-family: var(--body);
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Newsreader', Georgia, serif;
+    background-color: #1e1e2f;
+    color: #f2f2f2;
+    line-height: 1.7;
 }
 
-::selection {
-    background: var(--gold);
-    color: var(--bg);
-}
-
-a {
-    color: inherit;
-}
-
-a:focus-visible,
-button:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-}
-
-/* ===================================================
-   Page frame
-=================================================== */
+/* main container for the whole page */
 #blogs_entity {
-    display: grid;
-    grid-template-columns: 44px minmax(0, 1fr);
-    max-width: 900px;
-    margin: 0 auto;
+    display: flex;
+}
+
+/* the coloured strip on the left, just a simple accent bar */
+.reel {
+    width: 10px;
+    background-color: #ffb703;
     min-height: 100vh;
 }
 
-/* Signature element: a filmstrip rail running the length of the entry,
-   a nod to "The Fall" and to each post being one frame of a longer reel. */
-.reel {
-    position: relative;
-    background: var(--bg-raised);
-    background-image:
-        radial-gradient(circle, var(--bg) 5px, transparent 5.5px);
-    background-size: 44px 34px;
-    background-position: center;
-    border-right: 1px solid var(--rule);
-}
-
 #blog_body {
-    padding: clamp(28px, 6vw, 72px) clamp(20px, 6vw, 64px) 96px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
-/* ===================================================
-   Header
-=================================================== */
+/* ---------- header ---------- */
 .blog-header {
-    margin-bottom: clamp(36px, 6vw, 56px);
+    margin-bottom: 40px;
 }
 
 .eyebrow {
-    margin: 0 0 6px;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--gold-dim);
+    color: #ffb703;
+    margin-bottom: 8px;
 }
 
-h3 {
-    margin: 0;
-    font-family: var(--display);
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-size: clamp(2.4rem, 7vw, 3.6rem);
-    letter-spacing: 0.01em;
-    line-height: 1;
-    color: var(--ink);
+.blog-header h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 42px;
 }
 
-/* ===================================================
-   Entry list
-=================================================== */
+/* ---------- entry meta (frame number + time) ---------- */
 .entries {
     list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.entry {
-    max-width: 62ch;
 }
 
 .entry-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 26px;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--ink-dim);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #cccccc;
+    margin-bottom: 25px;
 }
 
 .frame {
-    color: var(--gold);
-    letter-spacing: 0.08em;
+    color: #ffb703;
 }
 
-.divider {
-    color: var(--rule);
-}
-
-/* ===================================================
-   Body copy
-=================================================== */
+/* ---------- body text ---------- */
 .entry p {
-    font-size: 1.08rem;
-    line-height: 1.75;
-    margin: 0 0 1.4em;
-    color: var(--ink);
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
-.entry p.drop::first-letter {
-    float: left;
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 3.4em;
-    line-height: 0.85;
-    padding: 0.05em 0.09em 0 0;
-    color: var(--gold);
-}
-
-.glyph {
-    font-style: normal;
-    opacity: 0.7;
-}
-
-/* Inline citations for the book / film links: understated,
-   a single warm underline rather than default blue link styling. */
+/* ---------- links to the book and movie ---------- */
 .cite {
-    text-decoration: none;
-    font-style: italic;
-    color: var(--ink);
-    border-bottom: 1px solid var(--gold-dim);
-    padding-bottom: 1px;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    color: #ffb703;
+    text-decoration: underline;
 }
 
 .cite:hover {
-    color: var(--gold);
-    border-color: var(--gold);
+    color: #ffcd39;
 }
 
-/* Pull quotes for the two reflective one-liners:
-   set apart like a subtitle card, not a generic blockquote. */
+/* ---------- pull quotes ---------- */
 .pull {
-    margin: 2.2em 0 2.2em 0;
-    padding: 0.2em 0 0.2em 1.3em;
-    border-left: 2px solid var(--gold);
-    font-family: var(--body);
+    border-left: 3px solid #ffb703;
+    padding-left: 20px;
+    margin: 30px 0;
     font-style: italic;
-    font-weight: 500;
-    font-size: 1.18rem;
-    line-height: 1.6;
-    color: var(--ink);
-    letter-spacing: 0.005em;
+    color: #dddddd;
 }
 
-/* ===================================================
-   Responsive
-=================================================== */
-@media (max-width: 640px) {
-    #blogs_entity {
-        grid-template-columns: 22px minmax(0, 1fr);
-    }
-
+/* smaller screens: shrink the accent bar a bit */
+@media (max-width: 600px) {
     .reel {
-        background-size: 22px 26px;
-        background-image: radial-gradient(circle, var(--bg) 3px, transparent 3.5px);
+        width: 6px;
     }
 
-    #blog_body {
-        padding: 32px 20px 72px;
-    }
-
-    .entry p.drop::first-letter {
-        font-size: 2.8em;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
+    .blog-header h3 {
+        font-size: 32px;
     }
 }
